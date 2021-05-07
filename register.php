@@ -20,6 +20,22 @@ include('styles/register_style.php')
           <div class="form-group">
           	<input type="text" class="form-control" name="email" placeholder="Email" required="required">
           </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" name="phone_number" placeholder="Mobile Number" required="required">
+              </div>
+              <div class="col-md-4">
+                <select class="form-control" name="gender">
+                  <option value="" disabled selected>Gender</option>
+                  <option value="">Male</option>
+                  <option value="">Female</option>
+                  <option value="">Custom</option>
+                </select>
+              </div>
+            </div>
+          </div>
   		    <div class="form-group">
               <input type="password" class="form-control" name="password" placeholder="Password" required="required">
           </div>
