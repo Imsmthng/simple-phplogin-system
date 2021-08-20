@@ -1,55 +1,103 @@
 <?php
+if(!isset($_SESSION)){
+  session_start();
+}
+if(isset($_SESSION['authenticated'])){
+  $_SESSION['status'] = "You are currently Logged In";
+  header("Location:dashboard.php");
+  exit(0);
+}
+$page_title = "Registration Form";
 include('includes/header.php');
-include('styles/register_style.php')
 ?>
 
-<div class="py-5">
+<div class="py">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
 
-  <div class="signup-form">
-      <form action="" method="POST">
-  		<h2>Register</h2>
-        <div class="form-group">
-  			<div class="row">
-  				<div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-  				<div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
-  			</div>
-        </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username" required="required">
-           </div>
-          <div class="form-group">
-          	<input type="text" class="form-control" name="email" placeholder="Email" required="required">
-          </div>
+              <div class="alert">
+                <?php
+                  if(isset($_SESSION['status'])){
+                    ?>
+                    <div class="alert alert-success">
+                      <h5><?= $_SESSION['status']; ?></h5>
+                    </div>
+                    <?php
+                    unset($_SESSION['status']);
+                  }
+                ?>
+              </div>
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" name="phone_number" placeholder="Mobile Number" required="required">
-              </div>
-              <div class="col-md-4">
-                <select class="form-control" name="gender">
-                  <option value="" disabled selected>Gender</option>
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Custom</option>
-                </select>
-              </div>
+            <div class="card shadow">
+            <div class="card-header text-center" style="background: #133337; color: #fff;">
+                <h5>Registration Form</h5>
             </div>
-          </div>
-  		    <div class="form-group">
-              <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-          </div>
-  		    <div class="form-group">
-              <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
-          </div>
-  		    <div class="form-group">
-              <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
-          </div>
-      </form>
-  	<div class="text-center">Already have an account? <a href="index.php">Sign in</a></div>
-  </div>
+            <div class="card-body">
+                <form action="register_process.php" method="POST">
+                  <div class="form-group mb-3">
+                      <label for="">Username</label>
+                      <input type="text" name="username" class="form-control" required='required'>
+                  </div>
 
+                  <div class="row">
+            				<div class="col">
+                      <div class="form-group mb-3">
+                        <label for="">First Name</label>
+                        <input type="text" class="form-control" name="first_name" required="required">
+                      </div>
+                    </div>
+            				<div class="col">
+                      <div class="form-group mb-3">
+                        <label for="">Last Name</label>
+                        <input type="text" class="form-control" name="last_name" required="required">
+                      </div>
+                    </div>
+            			</div>
+
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group mb-3">
+                        <label for="">Email Address</label>
+                        <input type="text" name="email" class="form-control" required='required'>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group mb-3">
+                      <label for="">Sex</label>
+                      <select class="form-control" name="sexID" required="required">
+                        <option value="" disabled selected>Sex</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="">Password</label>
+                    <input type="password" name="password" class="form-control" required='required'>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" required='required'>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" name="register_btn" class="btn btn-success">Submit</button>
+                </div>
+                </form>
+                <div class="text-center">Already have an account? <a href="index.php">Sign in</a></div>
+            </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
 
 <?php
 include('includes/footer.php');
