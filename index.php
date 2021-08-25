@@ -53,8 +53,8 @@ include('includes/header.php');
                     </div>
                   </div>
                     <div class="col">
-                      <div class="form-group">
-                          <div class="text-center" style="margin-top: 8px;"><a href="reset-password.php">Forgot Password</a></div>
+                      <div class="form-group" style="text-align: right; margin-top:8px">
+                          <a href="reset-password.php">Forgot Password</a>
                       </div>
                     </div>
                 </div>

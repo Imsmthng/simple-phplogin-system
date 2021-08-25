@@ -22,14 +22,14 @@ function sendmail_verification($first_name, $last_name, $email, $verify_token){
   $mail->SMTPSecure = "ssl";
   $mail->Port = 465;
 
-  $mail->setFrom("alumnitracer.plmun@gmail.com", $first_name);
+  $mail->setFrom("alumnitracer.plmun@gmail.com", "Email Verification");
   $mail->addAddress($email);
 
   $mail->isHTML(true);
-  $mail->Subject = "Email Verification from DEVSLibrary.io";
+  $mail->Subject = "Email Verification";
 
   $email_template = "
-  <h2>You have Registered with DevsLibrary.io</h2>
+  <h3>Your email have been registered</h3>
   <h4>Verify your email address to login with the below given link</h4>
   <br/><br/>
   <a href = 'http://localhost/simple-phplogin-system/verify-email.php?token=$verify_token'> Click Here </a>
