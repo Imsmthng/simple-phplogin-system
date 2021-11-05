@@ -6,4 +6,6 @@ Open Terminal and Run:
 "composer require phpmailer/phpmailer"
 ```
 
+Test
+
 
