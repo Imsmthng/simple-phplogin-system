@@ -20,7 +20,7 @@ include('includes/header.php');
                 <?php
                   if(isset($_SESSION['status'])){
                     ?>
-                    <div class="alert alert-success">
+                    <div class="alert alert-warning">
                       <h5><?= $_SESSION['status']; ?></h5>
                     </div>
                     <?php
